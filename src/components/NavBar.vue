@@ -15,9 +15,14 @@
           @click="toggleModal"
         ></i>
         <i
+          @click="addCity"
+          v-if="route.query.preview"
           class="fa-solid fa-plus text-xl hover:text-weather-secondary duration-150 cursor-pointer"
         ></i>
       </div>
+
+      <!-- modal -->
+
       <base-modal :modalActive="modalActive" @close-modal="toggleModal">
         <div class="text-black">
           <h1 class="text-2xl mb-1">О сервисе</h1>
@@ -53,12 +58,38 @@
 
 <script setup>
 import { ref } from "@vue/reactivity";
-import { RouterLink } from "vue-router";
+import { uid } from "uid";
+import { RouterLink, useRoute, useRouter } from "vue-router";
 import BaseModal from "./BaseModal.vue";
 
 const modalActive = ref(null);
+const savedCites = ref([]);
+const route = useRoute();
+const router = useRouter();
+
 const toggleModal = () => {
   modalActive.value = !modalActive.value;
+};
+
+const addCity = () => {
+  if (localStorage.getItem("saveCities")) {
+    savedCites.value = JSON.parse(localStorage.getItem("saveCities"));
+  }
+  const locationObj = {
+    id: uid(),
+    state: route.params.state,
+    city: route.params.city,
+    coords: {
+      lat: route.query.lat,
+      lng: route.query.lng,
+    },
+  };
+  savedCites.value.push(locationObj);
+  localStorage.setItem("savedCities", JSON.stringify(savedCites.value));
+
+  let query = Object.assign({}, route.query);
+  delete query.preview;
+  router.replace({ query });
 };
 </script>
 

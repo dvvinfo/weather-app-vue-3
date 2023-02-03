@@ -5,7 +5,8 @@
       class="text-white p-4 bg-weather-secondary w-full text-center"
     >
       <p>
-        В данный момент вы просматриваете этот город, нажмите на значок "+", чтобы начать отслеживать этот город
+        В данный момент вы просматриваете этот город, нажмите на значок "+",
+        чтобы начать отслеживать этот город
       </p>
     </div>
     <!-- Weather Overlay -->
@@ -47,9 +48,9 @@
 
     <!-- Hourly Weather -->
     <div class="max-w-screen-md w-full py-12">
-      <div class="mx-8 text-white ">
+      <div class="mx-8 text-white">
         <h2 class="mb-4">Почасовая погода</h2>
-        <div class="flex gap-10 overflow-x-scroll pb-5">
+        <div class="custom-scroll flex gap-10 overflow-x-scroll pb-5">
           <div
             v-for="hourData in weatherData.hourly"
             :key="hourData.dt"
@@ -97,9 +98,9 @@
             alt=""
           />
           <div class="flex gap-2 flex-1 justify-end">
-            <p> {{ Math.round(day.temp.max) }}</p>
+            <p>{{ Math.round(day.temp.max) }}</p>
             <p>/</p>
-            <p> {{ Math.round(day.temp.min) }}</p>
+            <p>{{ Math.round(day.temp.min) }}</p>
           </div>
         </div>
       </div>
@@ -139,4 +140,19 @@ const getWeatherData = async () => {
 const weatherData = await getWeatherData();
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.custom-scroll {
+  scrollbar-width: thin;          
+  scrollbar-color: #004e71 #3eb3dd
+}
+.custom-scroll::-webkit-scrollbar {
+  width: 12px;
+}
+.custom-scroll::-webkit-scrollbar-track {
+  background: #004e71;
+}
+.custom-scroll::-webkit-scrollbar-thumb {
+  background-color: #3eb3dd;
+  border-radius: 20px;
+}
+</style>
