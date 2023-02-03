@@ -6,7 +6,7 @@
       <router-link :to="{ name: 'home' }">
         <div class="flex items-center gap-3">
           <i class="fa-solid fa-sun text-2xl"></i>
-          <p class="text-2xl">The Local Weather</p>
+          <p class="text-2xl">Местная погода</p>
         </div>
       </router-link>
       <div class="flex gap-3 flex-1 justify-end">
@@ -20,31 +20,30 @@
       </div>
       <base-modal :modalActive="modalActive" @close-modal="toggleModal">
         <div class="text-black">
-          <h1 class="text-2xl mb-1">About:</h1>
+          <h1 class="text-2xl mb-1">О сервисе</h1>
           <p class="mb-4">
-            The Local Weather allows you to track the current and future weather
-            of cities of your choosing.
+            Местная погода позволяет вам отслеживать текущую и будущую погоду из
+            городов по вашему выбору.
           </p>
-          <h2 class="text-2xl">How it works:</h2>
+          <h2 class="text-2xl">Как это работает:</h2>
           <ol class="list-decimal list-inside mb-4">
+            <li>Найдите свой город, введя название в строку поиска..</li>
             <li>
-              Search for your city by entering the name into the search bar.
+              Выберите город в результатах, это приведет вас к текущей погоде
+              для вашего выбора.
             </li>
             <li>
-              Select a city within the results, this will take you to the
-              current weather for your selection.
-            </li>
-            <li>
-              Track the city by clicking on the "+" icon in the top right. This
-              will save the city to view at a later time on the home page.
+              Отслеживайте город, нажав на значок "+" в правом верхнем углу.
+              Этот сохранит город для последующего просмотра на домашней
+              странице.
             </li>
           </ol>
 
-          <h2 class="text-2xl">Removing a city</h2>
+          <h2 class="text-2xl">Удаление города</h2>
           <p>
-            If you no longer wish to track a city, simply select the city within
-            the home page. At the bottom of the page, there will be am option to
-            delete the city.
+            Если вы больше не хотите отслеживать город, просто выберите его на
+            домашней странице. В нижней части страницы будет возможность удалить
+            город.
           </p>
         </div>
       </base-modal>
@@ -57,11 +56,10 @@ import { ref } from "@vue/reactivity";
 import { RouterLink } from "vue-router";
 import BaseModal from "./BaseModal.vue";
 
-const modalActive = ref(null)
+const modalActive = ref(null);
 const toggleModal = () => {
-    modalActive.value = !modalActive.value
-}
-
+  modalActive.value = !modalActive.value;
+};
 </script>
 
 <style lang="scss" scoped></style>
