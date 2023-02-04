@@ -12,7 +12,9 @@
         v-if="mapboxSearchResults"
         class="absolute bg-weather-secondary text-white w-full shadow-md py-2 px-1 top-[66px]"
       >
-        <p v-if="searchError">Извините, что-то пошло не так, пожалуйста, попробуйте еще раз.</p>
+        <p v-if="searchError">
+          Извините, что-то пошло не так, пожалуйста, попробуйте еще раз.
+        </p>
         <p v-if="!searchError && mapboxSearchResults.length === 0">
           Результаты не соответствуют вашему запросу, попробуйте другой термин.
         </p>
@@ -28,11 +30,11 @@
         </template>
       </ul>
     </div>
-    <div class="flex flex-col gap-4 ">
+    <div class="flex flex-col gap-4">
       <Suspense>
         <city-list />
         <template #fallback>
-          <p class="text-white">Loading ...</p>
+          <city-card-skeleton />
         </template>
       </Suspense>
     </div>
@@ -44,11 +46,12 @@ import { ref } from "@vue/reactivity";
 import axios from "axios";
 import { useRouter } from "vue-router";
 import CityList from "../components/CityList.vue";
+import CityCardSkeleton from "../components/CityCardSkeleton.vue";
 
 const router = useRouter();
 const mapboxAPIKey =
   "pk.eyJ1IjoieW9sYW5kYTEiLCJhIjoiY2xkbzhrZzhmMGFtbTNwbzZ0dm1odjQ2OSJ9.u1HKJB3Fzl3Hu0tI9WS4kA";
-  const searchQuery = ref("");
+const searchQuery = ref("");
 const queryTimeout = ref(null);
 const mapboxSearchResults = ref(null);
 const searchError = ref(null);

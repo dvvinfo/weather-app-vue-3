@@ -1,9 +1,11 @@
 <template>
   <div>
     <Suspense>
-      <async-city />
+      <template #default>
+        <async-city />
+      </template>
       <template #fallback>
-        <p class="text-white">Loading ...</p>
+        <city-skeleton />
       </template>
     </Suspense>
   </div>
@@ -11,6 +13,8 @@
 
 <script setup>
 import AsyncCity from "../components/AsyncCity.vue";
+import CitySkeleton from "../components/CitySkeleton.vue";
+import CityCardSkeleton from "../components/CityCardSkeleton.vue";
 </script>
 
 <style lang="scss" scoped></style>

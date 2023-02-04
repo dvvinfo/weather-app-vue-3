@@ -10,7 +10,9 @@
       </p>
     </div>
     <!-- Weather Overlay -->
-    <div class="flex flex-col items-center text-white my-5 py-12 shadow-lg max-w-screen-md w-full border-custom ">
+    <div
+      class="flex flex-col items-center text-white my-5 py-12 shadow-lg max-w-screen-md w-full border-custom"
+    >
       <h2 class="text-4xl mb-2">{{ route.params.city }}</h2>
       <p class="text-sm mb-12">
         {{
@@ -44,8 +46,6 @@
       />
     </div>
 
-  
-
     <!-- Hourly Weather -->
     <div class="max-w-screen-md w-full py-12 my-5 shadow-lg">
       <div class="mx-8 text-white">
@@ -73,8 +73,6 @@
         </div>
       </div>
     </div>
-
-
 
     <!-- Weekly Weather -->
     <div class="max-w-screen-md w-full py-12 my-5 shadow-lg">
@@ -141,6 +139,9 @@ const getWeatherData = async () => {
       hour.currentTime = utc + 1000 * weatherData.data.timezone_offset;
     });
 
+    // Flicker Delay
+    await new Promise((res) => setTimeout(res, 1000));
+
     return weatherData.data;
   } catch (error) {
     console.log(error);
@@ -174,8 +175,4 @@ const removeCity = () => {
   background-color: #3eb3dd;
   border-radius: 20px;
 }
-// .border-custom {
-//   border: 1px solid #004E71;
-
-// }
 </style>
