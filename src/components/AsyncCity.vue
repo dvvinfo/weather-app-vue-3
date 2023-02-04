@@ -29,7 +29,7 @@
       <p class="text-8xl mb-8">
         {{ Math.round(weatherData.current.temp) }}&deg;
       </p>
-      <p>
+      <p class="mb-1">
         Ощущаеться
         {{ Math.round(weatherData.current.feels_like) }} &deg;
       </p>

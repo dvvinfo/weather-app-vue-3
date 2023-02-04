@@ -28,6 +28,14 @@
         </template>
       </ul>
     </div>
+    <div class="flex flex-col gap-4 ">
+      <Suspense>
+        <city-list />
+        <template #fallback>
+          <p class="text-white">Loading ...</p>
+        </template>
+      </Suspense>
+    </div>
   </main>
 </template>
 
@@ -35,6 +43,7 @@
 import { ref } from "@vue/reactivity";
 import axios from "axios";
 import { useRouter } from "vue-router";
+import CityList from "../components/CityList.vue";
 
 const router = useRouter();
 const mapboxAPIKey =
