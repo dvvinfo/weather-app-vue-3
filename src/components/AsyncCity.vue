@@ -10,7 +10,7 @@
       </p>
     </div>
     <!-- Weather Overlay -->
-    <div class="flex flex-col items-center text-white py-12">
+    <div class="flex flex-col items-center text-white my-5 py-12 shadow-lg max-w-screen-md w-full border-custom ">
       <h2 class="text-4xl mb-2">{{ route.params.city }}</h2>
       <p class="text-sm mb-12">
         {{
@@ -44,10 +44,10 @@
       />
     </div>
 
-    <hr class="border-white border-opacity-10 border w-full" />
+  
 
     <!-- Hourly Weather -->
-    <div class="max-w-screen-md w-full py-12">
+    <div class="max-w-screen-md w-full py-12 my-5 shadow-lg">
       <div class="mx-8 text-white">
         <h2 class="mb-4">Почасовая погода</h2>
         <div class="custom-scroll flex gap-10 overflow-x-scroll pb-5">
@@ -74,10 +74,10 @@
       </div>
     </div>
 
-    <hr class="border-white border-opacity-10 border w-full" />
+
 
     <!-- Weekly Weather -->
-    <div class="max-w-screen-md w-full py-12">
+    <div class="max-w-screen-md w-full py-12 my-5 shadow-lg">
       <div class="mx-8 text-white">
         <h2 class="mb-4">Прогноз на 7 дней</h2>
         <div
@@ -105,15 +105,25 @@
         </div>
       </div>
     </div>
+
+    <div
+      @click="removeCity"
+      class="flex items-center gap-2 py-8 text-white cursor-pointer duration-150 hover:text-red-500"
+    >
+      <i class="fa-solid fa-trash"></i>
+      <p>Remove City</p>
+    </div>
   </div>
 </template>
 
 <script setup>
 import axios from "axios";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 const route = useRoute();
 const APIKey = "843d1a3ab8b14edafa2cc046a3ecf10e";
+const router = useRouter();
+
 const getWeatherData = async () => {
   try {
     const weatherData = await axios.get(
@@ -138,12 +148,21 @@ const getWeatherData = async () => {
 };
 
 const weatherData = await getWeatherData();
+
+const removeCity = () => {
+  const cites = JSON.parse(localStorage.getItem("savedCities"));
+  const updatedCities = cites.filter((city) => city.id !== route.query.id);
+  localStorage.setItem("savedCities", JSON.stringify(updatedCities));
+  router.push({
+    name: "home",
+  });
+};
 </script>
 
 <style lang="scss" scoped>
 .custom-scroll {
-  scrollbar-width: thin;          
-  scrollbar-color: #004e71 #3eb3dd
+  scrollbar-width: thin;
+  scrollbar-color: #004e71 #3eb3dd;
 }
 .custom-scroll::-webkit-scrollbar {
   width: 12px;
@@ -155,4 +174,8 @@ const weatherData = await getWeatherData();
   background-color: #3eb3dd;
   border-radius: 20px;
 }
+// .border-custom {
+//   border: 1px solid #004E71;
+
+// }
 </style>
