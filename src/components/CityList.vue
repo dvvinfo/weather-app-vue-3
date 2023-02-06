@@ -15,7 +15,7 @@ import { useRouter } from "vue-router";
 import CityCard from "./CityCard.vue";
 
 const savedCities = ref([]);
-const APIKey = "843d1a3ab8b14edafa2cc046a3ecf10e";
+const APIKey = import.meta.env.VITE_APP_API_Key;
 const router = useRouter();
 
 const getCities = async () => {

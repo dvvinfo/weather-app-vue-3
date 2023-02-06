@@ -5,7 +5,7 @@
         v-model="searchQuery"
         @input="getSearchResults"
         type="text"
-        placeholder="Search for a city or state"
+        placeholder="Поиск по городу"
         class="py-2 px-1 w-full bg-transparent border-b focus:border-weather-secondary focus:outline-none focus:shadow-[0px_1px_0_0_#004E71]"
       />
       <ul
@@ -49,8 +49,7 @@ import CityList from "../components/CityList.vue";
 import CityCardSkeleton from "../components/CityCardSkeleton.vue";
 
 const router = useRouter();
-const mapboxAPIKey =
-  "pk.eyJ1IjoieW9sYW5kYTEiLCJhIjoiY2xkbzhrZzhmMGFtbTNwbzZ0dm1odjQ2OSJ9.u1HKJB3Fzl3Hu0tI9WS4kA";
+const mapboxAPIKey = import.meta.env.VITE_APP_Mapbox_API_Key;
 const searchQuery = ref("");
 const queryTimeout = ref(null);
 const mapboxSearchResults = ref(null);
