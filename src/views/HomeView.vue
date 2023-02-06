@@ -49,7 +49,7 @@ import CityList from "../components/CityList.vue";
 import CityCardSkeleton from "../components/CityCardSkeleton.vue";
 
 const router = useRouter();
-const mapboxAPIKey = import.meta.env.VITE_APP_Mapbox_API_Key;
+const mapboxAPIKey = "pk.eyJ1IjoieW9sYW5kYTEiLCJhIjoiY2xkbzhrZzhmMGFtbTNwbzZ0dm1odjQ2OSJ9.u1HKJB3Fzl3Hu0tI9WS4kA";
 const searchQuery = ref("");
 const queryTimeout = ref(null);
 const mapboxSearchResults = ref(null);
