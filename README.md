@@ -1,29 +1,27 @@
-# vue-project
+# Местная погода
 
-This template should help get you started developing with Vue 3 in Vite.
+Это SPA приложение погоды на Vue 3 и Vite с использованием API  mapbox и openweathermap.
 
-## Recommended IDE Setup
+## О сервисе
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Местная погода позволяет вам отслеживать текущую и будущую погоду из городов по вашему выбору.
 
-## Customize configuration
+## Как это работает:
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Найдите свой город, введя название в строку поиска.
 
-## Project Setup
+Выберите город в результатах, это приведет вас к текущей погоде для вашего выбора.
 
-```sh
-npm install
-```
+Отслеживайте город, нажав на значок "+" в правом верхнем углу. Этот сохранит город для последующего просмотра на домашней странице.
 
-### Compile and Hot-Reload for Development
 
-```sh
-npm run dev
-```
 
-### Compile and Minify for Production
+## Удаление города
 
-```sh
-npm run build
-```
+Если вы больше не хотите отслеживать город, просто выберите его на домашней странице. В нижней части страницы будет возможность удалить город.
+
+
+
+Посмотреть приложение можно  [по ссылке](https://dvvinfo-local-weather.netlify.app/).
+
+
